@@ -1,20 +1,88 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      SkeletonAPP
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <body>
+    <h1>Bienvenido</h1>
+    <h4>Usuario: {{usuario}}</h4>
+    <h2>Información adicional</h2>
+
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label>Nombre</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-input [(ngModel)]="user.nombre" placeholder="Ingrese su nombre"></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>Apellido</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-input [(ngModel)]="user.apellido" placeholder="Ingrese su apellido"></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>Nivel Educación</ion-label>
+        </ion-col>
+        <ion-col>
+              <ion-select placeholder="Seleccione nivel">
+                <ion-select-option value="Básica">Básica</ion-select-option>
+                <ion-select-option value="Media">Media</ion-select-option>
+                <ion-select-option value="Superior">Superior</ion-select-option>
+              </ion-select>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>Fecha Nacimiento</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-input type="date"></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+        </ion-col>
+        <ion-col>
+          <ion-button type='reset'>Limpiar</ion-button>
+        </ion-col>
+
+        <ion-col>
+        </ion-col>
+
+        <ion-col>
+          <ion-button id="mostrar">Mostrar</ion-button>
+          <ion-alert
+            trigger="mostrar"
+            header="Usuario"
+            message="Su nombre es {{user.nombre}} {{user.apellido}}"
+            [buttons]="alertButtons"
+            ></ion-alert>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+
+
+    <ion-button routerLink="/login">Volver al login</ion-button>
+  </body>
+
 </ion-content>

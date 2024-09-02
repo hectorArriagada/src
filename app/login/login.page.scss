@@ -1,6 +1,6 @@
 body {
     min-height: 200px;
-    padding-top: 80px;
+    padding-top: 20px;
     display: flex;
     gap: 20px;
     flex-direction: column;
@@ -10,4 +10,8 @@ body {
 
 .user, .pass {
     width: 300px;
+}
+
+.logo {
+    width: 100px;
 }

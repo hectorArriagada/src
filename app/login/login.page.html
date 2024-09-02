@@ -11,20 +11,37 @@
        
       </div>
       
-      <ion-icon name="qr-code-outline"></ion-icon>
+      <ion-img src="assets/img/logo.png" class="logo"></ion-img>
       
-  
+   
       <div class="user">
-        <ion-input label="Usuario" label-placement="floating" fill="outline" ng-model="user"></ion-input>
+        <ion-input [(ngModel)]="user.usuario" label="user" label-placement="floating" fill="outline"></ion-input>
       </div>
   
       <div class="pass">
-        <ion-input type="Password" label="Clave" label-placement="floating" fill="outline">
+        <ion-input [(ngModel)]="user.clave" type="Password" label="Clave" label-placement="floating" fill="outline">
         </ion-input>
       </div>
+
+      <div>
+        <ion-label>{{mensaje}}</ion-label>
+      </div>
   
-      <ion-button class="btn-ingresar" [routerLink]="['/home']">Ingresar</ion-button>
+      <div *ngIf="spinner">
+        <ion-item id="carga">
+          <ion-label>Cargando</ion-label>
+        </ion-item>
+
+      </div>
+
+      <ion-button (click)="validar()" >Ingresar</ion-button>
+
+      <ion-button [routerLink]="['/registro']">Registrate aquí</ion-button>
+
+
   
+      
+
   </body>
   
   </ion-content>
