@@ -75,6 +75,21 @@ export class LoginPage implements OnInit {
     }
   }
 
+  cambiarClave() {
+    if (this.user.usuario.length != 0) {
+      let navigationExtras: NavigationExtras = {
+        state: {
+          usuario: this.user.usuario,
+        },
+      };
+
+      this.router.navigate(['/registro'], navigationExtras);
+
+    } else {
+      this.mensaje = 'Ingrese su usuario';
+    }
+  }
+
 
   ngOnInit() {
   }
