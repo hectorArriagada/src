@@ -29,6 +29,24 @@ export class LoginPage implements OnInit {
     this.spinner = !this.spinner;
   }
 
+  ngAfterContentInit() {
+    this.animarLogin();
+  }
+
+  animarLogin() {
+    const loginIcon = document.querySelector(".logo") as HTMLElement;
+    const animacion = this.animationController.create()
+      .addElement(loginIcon)
+      .duration(4000)
+      .iterations(Infinity)
+      .keyframes([
+        {offset: 0, opacity: '1', width: "200px", height: "200px"},
+        {offset: 0.5, opacity: '0.5', width: "150px", height: "150px"},
+        {offset: 1, opacity: '1', width: "200px", height: "200px"},
+      ]);
+      animacion.play();
+  }
+
   validar() {
     if (this.user.usuario.length != 0) {
       if (this.user.clave.length != 0) {

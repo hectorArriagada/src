@@ -1,8 +1,9 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      SkeletonAPP
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Back Button</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +15,7 @@
     <h2>Información adicional</h2>
 
 
-    <ion-grid>
+    <ion-grid>  
       <ion-row>
         <ion-col>
           <ion-label>Nombre</ion-label>
@@ -57,12 +58,7 @@
 
       <ion-row>
         <ion-col>
-        </ion-col>
-        <ion-col>
           <ion-button type='reset'>Limpiar</ion-button>
-        </ion-col>
-
-        <ion-col>
         </ion-col>
 
         <ion-col>
@@ -73,8 +69,6 @@
             message="Su nombre es {{user.nombre}} {{user.apellido}}"
             [buttons]="alertButtons"
             ></ion-alert>
-        </ion-col>
-        <ion-col>
         </ion-col>
       </ion-row>
 
