@@ -49,7 +49,7 @@ export class LoginPage implements OnInit {
 
   validar() {
     if (this.user.usuario.length != 0) {
-      if (this.user.clave.length != 0) {
+      if (this.user.clave.length != 0 && this.user.clave.length < 8) {
         //funciona
         this.mensaje = 'Conexión Exitosa!';
         let navigationExtras: NavigationExtras = {
@@ -67,7 +67,7 @@ export class LoginPage implements OnInit {
         }, 1);
 
       } else {
-        this.mensaje = 'Contraseña vacía';
+        this.mensaje = 'Contraseña no puede tener menos de 8 caracteres';
       }
       
     } else {
