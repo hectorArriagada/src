@@ -9,27 +9,23 @@ export class AuthService {
   
   constructor(private storage: StorageService) { }
 
-  loginBD(user: string, pass: String): Promise<boolean> {
-    // se obtiene un Promise con 1 valor, resuelto o no resuelto
-    return this.storage
-      .get(user)
-      .then((res) => {
-        // si funciona, me devuelve el user completo
-        if (res.password == pass) {
-          this.estadoConeccion = true;
-          return true;
-        } else {
-          return false;
-        }
-      })
-      .catch((error) => {
-        console.log('Error en el sistema' + error);
-        return false;
-      });
+  async loginBD(user: string, pass: string): Promise<any> {
+    try {
+      const res = await this.storage.get(user);
+      if (res && res.password === pass) {
+        this.estadoConeccion = true;
+        return res;
+      } else {
+        return null;
+      }
+    } catch (error) {
+      console.log('Error en el sistema' + error);
+      return null;
+    }
   }
 
-  login(user: String, pass: String): boolean {
-    if (user == 'juanito' && pass == 'prez') {
+  login(user: string, pass: string): boolean {
+    if (user === 'juanito' && pass === 'prez') {
       this.estadoConeccion = true;
       return true;
     }
@@ -46,19 +42,12 @@ export class AuthService {
   }
 
   async registrar(user: any): Promise<boolean> {
-    // set llave/valor
-    return this.storage.set(user.username, user.password)
-      .then((res) => {
-        if (res != null) {
-          return true;
-        } else {
-          return false;
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        return false;
-      });
+    try {
+      const res = await this.storage.set(user.username, user);
+      return res != null;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   }
-
 }

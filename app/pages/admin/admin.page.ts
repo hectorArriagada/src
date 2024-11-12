@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../servicios/api.service';
-import { StorageService } from '../servicios/storage.service';
+import { ApiService } from '../../servicios/api.service';
+import { StorageService } from '../../servicios/storage.service';
 
 @Component({
   selector: 'app-admin',

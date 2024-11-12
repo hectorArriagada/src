@@ -10,6 +10,7 @@ export const porteroGuard: CanActivateFn = (route, state) => {
   if (auth.isConected()) {
     return true;
   } else {
+    console.log("Saaale qlo")
     router.navigate(['/login']);
     return false;
   }

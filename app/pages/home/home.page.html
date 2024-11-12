@@ -14,7 +14,6 @@
     <h4>Usuario: {{user.nombre}}</h4>
     <h2>Información adicional</h2>
 
-
     <ion-grid>  
       <ion-row>
         <ion-col>
@@ -71,7 +70,6 @@
             ></ion-alert>
         </ion-col>
 
-
         <ion-col>
           <ion-item>
             <ion-button (click)="verStorage()">Consultar usuarios</ion-button>
@@ -87,30 +85,21 @@
 
     </ion-grid>
 
-            <ion-grid fixed>
-            <ion-row>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col><strong> Nombre de usuario </strong></ion-col>
+        <ion-col><strong> Contraseña de usuario </strong></ion-col>
+        <ion-col><strong> Modificar </strong></ion-col>
+        <ion-col><strong> Eliminar </strong></ion-col>
+      </ion-row>
 
-              <ion-col><strong> Nombre de usuario </strong></ion-col>
-              <ion-col><strong> Contraseña de usuario </strong></ion-col>
-              <ion-col><strong> Modificar </strong></ion-col>
-              <ion-col><strong> Eliminar </strong></ion-col>
-
-            </ion-row>
-
-            <ion-row > 
-
-                <ion-button fill="outline" size="small"> Modificar </ion-button>  
-
-
-              <ion-col >
-                <ion-button fill="outline" size="small"> Eliminar </ion-button> 
-              </ion-col>
-              
-            </ion-row>
-
-          </ion-grid>
-
-
+      <ion-row> 
+        <ion-button fill="outline" size="small"> Modificar </ion-button>  
+        <ion-col>
+          <ion-button fill="outline" size="small"> Eliminar </ion-button> 
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
     <ion-button routerLink="/login">Volver al login</ion-button>
   </body>

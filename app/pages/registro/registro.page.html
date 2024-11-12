@@ -24,14 +24,29 @@
     </ion-item>
 
     <ion-item>
+      <ion-input [(ngModel)]='user.nombre' label="Nombre" label-placement="floating" 
+          placeholder="Ingrese su nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input [(ngModel)]='user.apellido' label="Apellido" label-placement="floating" 
+          placeholder="Ingrese su apellido"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-select [(ngModel)]="user.categoria" placeholder="Seleccione categoría">
+        <ion-select-option value="profesor">Profesor</ion-select-option>
+        <ion-select-option value="alumno">Alumno</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
       <ion-button (click)="registrar()" fill="outline"> Registrar </ion-button>
     </ion-item> <br>
 
     <ion-item>
       <ion-button [routerLink]="['/login']"> Volver </ion-button>
     </ion-item>
-
-
 
   </ion-list>
 </body>

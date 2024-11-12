@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StorageService } from '../servicios/storage.service';
+import { StorageService } from '../../servicios/storage.service';
 
 @Component({
   selector: 'app-cambio-clave',

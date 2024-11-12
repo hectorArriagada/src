@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { AnimationController } from '@ionic/angular';
-import { StorageService } from '../servicios/storage.service';
-import { AuthService } from '../servicios/auth.service';
+import { StorageService } from '../../servicios/storage.service';
+import { AuthService } from '../../servicios/auth.service';
 
 @Component({
   selector: 'app-login',  
@@ -11,19 +11,13 @@ import { AuthService } from '../servicios/auth.service';
 })
 export class LoginPage implements OnInit {
 
-  /* objeto JSON para el usuario */
   user = {
     username: '',
     password: '',
   };
 
-  /* mensaje de respuesta */
   mensaje = '';
-
-  /* estado de carga */
   spinner = false;
-
-
 
   constructor(private router: Router, private animationController: AnimationController, private storage: StorageService,
     private auth: AuthService  ) {}
@@ -33,7 +27,6 @@ export class LoginPage implements OnInit {
   }
 
   ngAfterContentInit() {
-    this.animarLogin();
   }
 
   animarLogin() {
@@ -78,20 +71,27 @@ export class LoginPage implements OnInit {
     }
   }
 
-  validar2() {
-    this.auth
-      .loginBD(this.user.username, this.user.password)
-      .then((res) => {
-        this.mensaje = 'Conexión Exitosa' 
+  async validar2() {
+    try {
+      const res = await this.auth.loginBD(this.user.username, this.user.password);
+      if (res) {
+        this.mensaje = 'Conexión Exitosa';
         let navigationExtras: NavigationExtras = {
           state: {
-            username: this.user.username,
-            password: this.user.password
+            user: this.user.username,
           },
         };
-        this.router.navigate(['/home'], navigationExtras),
-        console.log(this.auth.isConected())
-      })
+        if (res.categoria === 'profesor') {
+          this.router.navigate(['/dash-profe'], navigationExtras);
+        } else if (res.categoria === 'alumno') {
+          this.router.navigate(['/dash-alumno'], navigationExtras);
+        }
+      } else {
+        this.mensaje = 'Usuario o contraseña incorrectos';
+      }
+    } catch (error) {
+      this.mensaje = 'Error en el sistema';
+    }
   }
 
   cambiarClave() {
@@ -109,9 +109,5 @@ export class LoginPage implements OnInit {
     }
   }
 
-
-  ngOnInit() {
-  }
-
-  
+  ngOnInit() {}
 }

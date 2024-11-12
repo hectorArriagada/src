@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage-angular'
+import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
-  private bd: Storage = new Storage();
+  private bd: Storage | null = null;
   private estadobd: Promise<void>;
 
-  // se inicializa el almacenamiento
-  constructor( private storage: Storage ) { 
+  constructor(private storage: Storage) { 
     this.estadobd = this.onInit();
   }
 
@@ -23,19 +22,18 @@ export class StorageService {
   }
 
   async get(key: string): Promise<any> {
-    await this.BDConectada()
-    return this.bd.get(key);
+    await this.BDConectada();
+    return this.bd?.get(key);
   }
 
   async set(key: string, valor: any): Promise<any> {
-    await this.BDConectada()
-    return this.bd.set(key, valor);
+    await this.BDConectada();
+    return this.bd?.set(key, valor);
   }
 
   async remove(key: string) {
-    await this.BDConectada()
-    this.bd.remove(key);
+    await this.BDConectada();
+    this.bd?.remove(key);
   }
-
 }
 
