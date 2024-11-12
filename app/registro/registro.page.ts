@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../servicios/auth.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registro',
@@ -7,36 +9,47 @@ import { Router } from '@angular/router';
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage implements OnInit {
-  usuario = '';
 
-  userpsw = {
-    clave1: '',
-    clave2: '',
-    mensaje: '',
+  user = {
+    username: '',
+    password: '',
   }
 
-  validarPsw() {
-    if (this.userpsw.clave1.length != 0) {
-      if (this.userpsw.clave1 === this.userpsw.clave2) {
-        this.userpsw.mensaje = 'Cambio exitoso';
-      } else {
-        this.userpsw.mensaje = 'Contraseña no coincide';
-      }
-    } else {
-      this.userpsw.mensaje = 'Los campos no pueden estar vacios';
+  constructor(private router: Router, 
+    private auth: AuthService, 
+    private toastController: ToastController) {
+
     }
-  }
+  
 
-  constructor(private router: Router) {
-    const navegacion = this.router.getCurrentNavigation();
-    const state = navegacion?.extras.state as {
-      usuario: '';
-      clave: '';
-    };
-    this.usuario = state.usuario;
+  async registrar() {
+    this.auth
+      .registrar(this.user)
+      .then((res) => {
+        console.log(this.user);
+        console.log(res)
+        return this.toastController.create({
+          message: 'Registrado con exito',
+          duration: 3000,
+          position: 'bottom',
+        });
+      })
+      .then((toast) => toast.present())
+      .catch((error) => {
+        return this.toastController
+          .create({
+            message: 'Error al registrar',
+            duration: 3000,
+            position: 'bottom',
+          })
+          .then((toast) => toast.present());
+      });
   }
 
   ngOnInit() {
   }
 
+  registrar2() {
+
+  }
 }

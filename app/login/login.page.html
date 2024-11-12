@@ -4,22 +4,18 @@
   <body>
     
       <div>
-  
-        <h1>SkeletonAPP</h1>
-        <h3>Aqui comienza todo</h3><br>
         <h2>Bienvenido</h2>
-       
       </div>
       
       <ion-img src="assets/img/logo.png" class="logo"></ion-img>
       
    
       <div class="user">
-        <ion-input [(ngModel)]="user.usuario" label="user" label-placement="floating" fill="outline"></ion-input>
+        <ion-input [(ngModel)]="user.username" label="Usuario" label-placement="floating" fill="outline"></ion-input>
       </div>
   
       <div class="pass">
-        <ion-input [(ngModel)]="user.clave" type="Password" label="Clave" label-placement="floating" fill="outline">
+        <ion-input [(ngModel)]="user.password" type="Password" label="Clave" label-placement="floating" fill="outline">
         </ion-input>
       </div>
 
@@ -34,9 +30,11 @@
 
       </div>
 
-      <ion-button (click)="validar()" >Ingresar</ion-button>
+      <ion-button (click)="validar2()" >Ingresar</ion-button>
 
-      <ion-button (click)="cambiarClave()">Recuperar contraseña</ion-button>
+      <ion-button fill="outline" (click)="cambiarClave()">Recuperar contraseña</ion-button>
+
+      <ion-button [routerLink]="['/registro']" > Registrar </ion-button>
 
 
   

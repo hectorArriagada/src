@@ -11,7 +11,7 @@
 
   <body>
     <h1>Bienvenido</h1>
-    <h4>Usuario: {{usuario}}</h4>
+    <h4>Usuario: {{user.nombre}}</h4>
     <h2>Información adicional</h2>
 
 
@@ -70,9 +70,45 @@
             [buttons]="alertButtons"
             ></ion-alert>
         </ion-col>
+
+
+        <ion-col>
+          <ion-item>
+            <ion-button (click)="verStorage()">Consultar usuarios</ion-button>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item>
+
+          </ion-item>
+        </ion-col>
       </ion-row>
 
     </ion-grid>
+
+            <ion-grid fixed>
+            <ion-row>
+
+              <ion-col><strong> Nombre de usuario </strong></ion-col>
+              <ion-col><strong> Contraseña de usuario </strong></ion-col>
+              <ion-col><strong> Modificar </strong></ion-col>
+              <ion-col><strong> Eliminar </strong></ion-col>
+
+            </ion-row>
+
+            <ion-row > 
+
+                <ion-button fill="outline" size="small"> Modificar </ion-button>  
+
+
+              <ion-col >
+                <ion-button fill="outline" size="small"> Eliminar </ion-button> 
+              </ion-col>
+              
+            </ion-row>
+
+          </ion-grid>
 
 
 

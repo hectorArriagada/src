@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { AnimationController } from '@ionic/angular';
+import { StorageService } from '../servicios/storage.service';
+import { AuthService } from '../servicios/auth.service';
 
 @Component({
   selector: 'app-login',  
@@ -11,8 +13,8 @@ export class LoginPage implements OnInit {
 
   /* objeto JSON para el usuario */
   user = {
-    usuario: '',
-    clave: '',
+    username: '',
+    password: '',
   };
 
   /* mensaje de respuesta */
@@ -23,7 +25,8 @@ export class LoginPage implements OnInit {
 
 
 
-  constructor(private router: Router, private animationController: AnimationController) {}
+  constructor(private router: Router, private animationController: AnimationController, private storage: StorageService,
+    private auth: AuthService  ) {}
 
   cambiarSpinner() {
     this.spinner = !this.spinner;
@@ -48,14 +51,14 @@ export class LoginPage implements OnInit {
   }
 
   validar() {
-    if (this.user.usuario.length != 0) {
-      if (this.user.clave.length != 0) {
+    if (this.user.username.length != 0) {
+      if (this.user.password.length != 0) {
         //funciona
         this.mensaje = 'Conexión Exitosa!';
         let navigationExtras: NavigationExtras = {
           state: {
-            usuario: this.user.usuario,
-            clave: this.user.clave,
+            usuario: this.user.username,
+            clave: this.user.password,
           },
         };
 
@@ -75,15 +78,31 @@ export class LoginPage implements OnInit {
     }
   }
 
+  validar2() {
+    this.auth
+      .loginBD(this.user.username, this.user.password)
+      .then((res) => {
+        this.mensaje = 'Conexión Exitosa' 
+        let navigationExtras: NavigationExtras = {
+          state: {
+            username: this.user.username,
+            password: this.user.password
+          },
+        };
+        this.router.navigate(['/home'], navigationExtras),
+        console.log(this.auth.isConected())
+      })
+  }
+
   cambiarClave() {
-    if (this.user.usuario.length != 0) {
+    if (this.user.username.length != 0) {
       let navigationExtras: NavigationExtras = {
         state: {
-          usuario: this.user.usuario,
+          usuario: this.user.username,
         },
       };
 
-      this.router.navigate(['/registro'], navigationExtras);
+      this.router.navigate(['/cambio-clave'], navigationExtras);
 
     } else {
       this.mensaje = 'Ingrese su usuario';

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { porteroGuard } from './portero.guard';
+import { porteroGuard } from './servicios/portero.guard';
 
 const routes: Routes = [
   {
@@ -19,11 +19,20 @@ const routes: Routes = [
   {
     path: 'registro',
     loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule),
-    canActivate: [porteroGuard]
+    //canActivate: [porteroGuard]
   },
   {
     path: 'not-found',
     loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
+  },
+  
+  {
+    path: 'cambio-clave',
+    loadChildren: () => import('./cambio-clave/cambio-clave.module').then( m => m.CambioClavePageModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
   },
 
   {
@@ -31,6 +40,8 @@ const routes: Routes = [
     redirectTo: 'not-found',
     pathMatch: 'full'
   },
+
+
 ];
 
 @NgModule({
