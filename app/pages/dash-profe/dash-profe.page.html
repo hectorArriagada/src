@@ -10,4 +10,18 @@
       <ion-title size="large">dash-profe</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-list>
+    <ion-item *ngFor="let course of courses">
+      <ion-label>{{ course.name }}</ion-label>
+      <ion-button (click)="selectCourse(course)">Ver Curso</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="selectedCourse">
+    <h2>{{ selectedCourse.name }}</h2>
+    <div>
+      <img [src]="qrCode" alt="QR Code">
+    </div>
+  </div>
 </ion-content>

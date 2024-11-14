@@ -37,12 +37,12 @@ const routes: Routes = [
   {
     path: 'dash-profe',
     loadChildren: () => import('./pages/dash-profe/dash-profe.module').then( m => m.DashProfePageModule),
-    canActivate: [porteroGuard]
+    //canActivate: [porteroGuard]
   },
   {
     path: 'dash-alumno',
     loadChildren: () => import('./pages/dash-alumno/dash-alumno.module').then( m => m.DashAlumnoPageModule),
-    canActivate: [porteroGuard]
+    //canActivate: [porteroGuard]
   },
   {
     path: '**',

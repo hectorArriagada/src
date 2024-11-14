@@ -18,13 +18,13 @@ export class AdminPage implements OnInit {
   }
 
 
-
   agregarUsuario() {
     this.api.postUser
     
   }
 
-  cargarUsuarios() {
+  cargarUsua
+  rios() {
     this.api.getUser().subscribe(
       (data) => {
         this.users = data

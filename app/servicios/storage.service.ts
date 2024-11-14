@@ -23,12 +23,13 @@ export class StorageService {
 
   async get(key: string): Promise<any> {
     await this.BDConectada();
-    return this.bd?.get(key);
+    const item = await this.bd?.get(key);
+    return item ? JSON.parse(item) : null;
   }
 
   async set(key: string, valor: any): Promise<any> {
     await this.BDConectada();
-    return this.bd?.set(key, valor);
+    return this.bd?.set(key, JSON.stringify(valor));
   }
 
   async remove(key: string) {
