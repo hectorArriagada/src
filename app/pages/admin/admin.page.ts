@@ -23,8 +23,7 @@ export class AdminPage implements OnInit {
     
   }
 
-  cargarUsua
-  rios() {
+  cargarUsuarios() {
     this.api.getUser().subscribe(
       (data) => {
         this.users = data

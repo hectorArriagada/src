@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { AnimationController } from '@ionic/angular';
 import { StorageService } from '../../servicios/storage.service';
@@ -9,7 +9,7 @@ import { AuthService } from '../../servicios/auth.service';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage implements OnInit, AfterContentInit {
 
   user = {
     username: '',
@@ -27,6 +27,7 @@ export class LoginPage implements OnInit {
   }
 
   ngAfterContentInit() {
+    console.log('Content has been initialized');
   }
 
   animarLogin() {
@@ -109,5 +110,7 @@ export class LoginPage implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.animarLogin();
+  }
 }
