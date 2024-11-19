@@ -1,13 +1,4 @@
-# Ionic dependencies
 node_modules/
 platforms/
 plugins/
 www/
-build/
-dist/
-.tmp/
-.idea/
-.vscode/
-.DS_Store
-.sass-cache/
-coverage/
