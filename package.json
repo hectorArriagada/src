@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@angular/core": "^18.2.12",
+    "@angular/material": "^18.2.13",
+    "@angular/router": "^18.2.12",
+    "@ionic/angular": "^8.4.0",
+    "@ionic/storage-angular": "^4.0.0",
+    "@types/angular": "^1.8.9"
+  }
+}
