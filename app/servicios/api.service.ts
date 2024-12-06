@@ -37,3 +37,28 @@ export class ApiService {
   }
 
 }
+
+
+
+// // firebase
+// // Import the functions you need from the SDKs you need
+// import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
+// // TODO: Add SDKs for Firebase products that you want to use
+// // https://firebase.google.com/docs/web/setup#available-libraries
+
+// // Your web app's Firebase configuration
+// // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBoi1Rf6W9Epc-SKBsQFgnEjh-qsnMxjUA",
+//   authDomain: "ionic-9b450.firebaseapp.com",
+//   projectId: "ionic-9b450",
+//   storageBucket: "ionic-9b450.firebasestorage.app",
+//   messagingSenderId: "1037914900113",
+//   appId: "1:1037914900113:web:0f280133b9fc4290da2130",
+//   measurementId: "G-44T4FYRXFM"
+// };
+
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);

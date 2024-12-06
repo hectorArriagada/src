@@ -10,12 +10,20 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { provideHttpClient } from '@angular/common/http';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+
 
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, MatProgressSpinnerModule, IonicStorageModule.forRoot(),],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideAnimationsAsync(), provideHttpClient()],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideAnimationsAsync(), provideHttpClient(),
+    provideFirebaseApp(() => initializeApp( environment.firebase )), provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()), provideStorage(() => getStorage()),],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

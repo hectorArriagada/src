@@ -1,0 +1,15 @@
+{
+    "usuarios": [
+      { "id": 1, "nombre": "Juan", "email": "juan@example.com" },
+      { "id": 2, "nombre": "Ana", "email": "ana@example.com" }
+    ]
+    ,
+    "cursos": [
+      { "id": 1, "nombre": "Curso de Node.js" },
+      { "id": 2, "nombre": "Curso de React" }
+    ],
+    "asistencia": [
+      { "id": 1, "curso_id": 1, "usuario_id": 1 },
+      { "id": 2, "curso_id": 1, "usuario_id": 2 }
+    ]
+  }
