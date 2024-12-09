@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, retry, catchError } from 'rxjs';
 import { StorageService } from './storage.service';
-import { collection, collectionData, doc, Firestore, setDoc, updateDoc } from '@angular/fire/firestore';
+
  
 
 @Injectable({
@@ -10,7 +10,7 @@ import { collection, collectionData, doc, Firestore, setDoc, updateDoc } from '@
 })
 export class ApiService {
 
-  private firestore: Firestore = inject(Firestore);
+
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -40,25 +40,7 @@ export class ApiService {
     return this.http.delete(this.apiUrl + "/users/" + id);
   }
 
-  getCollectionChanges<tipo>(path: string) {
-    const itemCollection = collection(this.firestore, path);
-    return collectionData(itemCollection) as Observable<tipo[]>;
-  }
 
-  createDocument(data: any, enlace: string) {
-    const document = doc(this.firestore, enlace);
-    return setDoc(document, data);
-  }
-
-  createDocumentID(data: any, enlace: string, idDoc: string) {
-    const document = doc(this.firestore, `${enlace}/${idDoc}`);
-    return setDoc(document, data);
-  }
-
-  updateDocumentID(data:any, enlace: string, idDoc: string) {
-    const document = doc(this.firestore, `${enlace}/${idDoc}`);
-    return updateDoc(document, data);
-  }
 
 }
 

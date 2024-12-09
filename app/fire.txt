@@ -1,0 +1,83 @@
+  getCollectionChanges<tipo>(path: string) {
+    const itemCollection = collection(this.firestore, path);
+    return collectionData(itemCollection) as Observable<tipo[]>;
+  }
+
+  createDocument(data: any, enlace: string) {
+    const document = doc(this.firestore, enlace);
+    return setDoc(document, data);
+  }
+
+  createDocumentID(data: any, enlace: string, idDoc: string) {
+    const document = doc(this.firestore, `${enlace}/${idDoc}`);
+    return setDoc(document, data);
+  }
+
+  updateDocumentID(data:any, enlace: string, idDoc: string) {
+    const document = doc(this.firestore, `${enlace}/${idDoc}`);
+    return updateDoc(document, data);
+  }
+
+
+
+export interface UserI {
+    usuario: string;
+    clave: string;
+    tipoUsuario: string;
+    idUsuario: string;
+}
+
+export interface CursoI {
+    nombre: string;
+    descripcion: string;
+    fechaInicio: string;
+    fechaFin: string;
+    idCurso: string;
+}
+
+export interface AsistenciaI {
+    id: string;
+    idCurso: string;
+    idUsuario: string;
+    fecha: string;
+    asistio: boolean;
+}
+
+
+
+
+    provideFirebaseApp(() => initializeApp( environment.firebase )), provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()), provideStorage(() => getStorage()),
+
+
+
+export const environment = {
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyBoi1Rf6W9Epc-SKBsQFgnEjh-qsnMxjUA",
+    authDomain: "ionic-9b450.firebaseapp.com",
+    projectId: "ionic-9b450",
+    storageBucket: "ionic-9b450.firebasestorage.app",
+    messagingSenderId: "1037914900113",
+    appId: "1:1037914900113:web:0f280133b9fc4290da2130",
+    measurementId: "G-44T4FYRXFM"
+  }
+};
+
+
+
+export const environment = {
+  production: true,
+  firebase: {
+    apiKey: "AIzaSyBoi1Rf6W9Epc-SKBsQFgnEjh-qsnMxjUA",
+    authDomain: "ionic-9b450.firebaseapp.com",
+    projectId: "ionic-9b450",
+    storageBucket: "ionic-9b450.firebasestorage.app",
+    messagingSenderId: "1037914900113",
+    appId: "1:1037914900113:web:0f280133b9fc4290da2130",
+    measurementId: "G-44T4FYRXFM"
+  }
+};
+
+
+

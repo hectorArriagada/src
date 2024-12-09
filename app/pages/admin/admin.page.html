@@ -33,16 +33,14 @@
 
             </ion-row>
 
-            <ion-row *ngFor="let user of users2"> 
+            <ion-row *ngFor="let user of users"> 
               <ion-col>{{user.usuario}}</ion-col>
               <ion-col>{{user.clave}}</ion-col>
-              <ion-col (click)="modificarUsuario(user.idUsuario)">
-                <ion-button fill="outline" size="small"> Modificar </ion-button>  
-              </ion-col>
+              <ion-col>{{user.tipoUsuario}}</ion-col>
+              <ion-col>{{user.idUsuario}}</ion-col>
+              <ion-button fill="outline" size="small"> Modificar </ion-button>  
 
-              <ion-col (click)="eliminarUsuario(user.idUsuario)">
-                <ion-button fill="outline" size="small"> Eliminar </ion-button> 
-              </ion-col>
+              <ion-button fill="outline" size="small"> Eliminar </ion-button> 
               
             </ion-row>
 
