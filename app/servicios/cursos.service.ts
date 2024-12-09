@@ -19,12 +19,12 @@ export class CursosService {
     ]
   };
 
-  getCourses(): Promise<any[]> {
-    return new Promise((resolve) => {
-      const courses = this.storage.get(this.storageKey) || [];
-      resolve(courses);
-    });
-  }
+  // getCourses(): Promise<any[]> {
+  //   return new Promise((resolve) => {
+  //     const courses = this.storage.get(this.storageKey) || [];
+  //     resolve(courses);
+  //   });
+  // }
 
   getCourseById(courseId: string): Promise<any> {
     return new Promise(async (resolve) => {

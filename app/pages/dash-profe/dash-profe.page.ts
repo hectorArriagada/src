@@ -15,12 +15,12 @@ export class DashProfePage implements OnInit {
   constructor(private cursosService: CursosService, private asistenciaService: AsistenciaService) { }
 
   ngOnInit() {
-    this.loadCourses();
+    // this.loadCourses();
   }
 
-  async loadCourses() {
-    this.courses = await this.cursosService.getCourses();
-  }
+  // async loadCourses() {
+  //   this.courses = await this.cursosService.getCourses();
+  // }
 
   selectCourse(course: any) {
     this.selectedCourse = course;

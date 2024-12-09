@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../servicios/api.service';
 import { StorageService } from '../../servicios/storage.service';
+import { UserI } from '../../servicios/modelos';
 
 @Component({
   selector: 'app-admin',
@@ -9,9 +10,12 @@ import { StorageService } from '../../servicios/storage.service';
 })
 export class AdminPage implements OnInit {
 
-  users: any[] = []
+  users: any[] = [];
+  users2: UserI[] = [];
 
-  constructor( private api: ApiService, private storage: StorageService) { }
+  constructor( private api: ApiService, private storage: StorageService) {
+    this.loadUsers();
+   }
 
   ngOnInit() {
     this.cargarUsuarios();
@@ -46,5 +50,13 @@ export class AdminPage implements OnInit {
       }
     )
   }
+
+  loadUsers() {
+    this.api.getCollectionChanges<UserI>('Usuarios').subscribe( data => {
+      if (data) {
+        this.users2 = data
+      }
+  });
+}
 
 }
