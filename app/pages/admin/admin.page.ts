@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserI } from '../../servicios/modelos';
-import { FirestoreService } from '../../firestore.service';
+import { FirestoreService } from '../../servicios/firestore.service';
 
 @Component({
   selector: 'app-admin',
